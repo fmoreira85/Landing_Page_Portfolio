@@ -7,8 +7,8 @@ const whatsAppUrl =
 
 const navItems = [
   { href: '#about', label: 'Sobre mim' },
-  { href: '#skills', label: 'Competencias' },
-  { href: '#portfolio', label: 'Portfolio' },
+  { href: '#skills', label: 'Competências' },
+  { href: '#portfolio', label: 'Portfólio' },
   { href: '#contact', label: 'Contato' },
 ];
 
@@ -16,17 +16,17 @@ const serviceCards = [
   {
     icon: 'bi-window-stack',
     title: 'Interfaces com foco em resultado',
-    text: 'Desenvolvo experiencias modernas, leves e responsivas para produtos digitais, paginas de conversao e ambientes internos.',
+    text: 'Desenvolvo experiências modernas, leves e responsivas para produtos digitais, páginas de conversão e ambientes internos.',
   },
   {
     icon: 'bi-diagram-3',
     title: 'Back-end com estrutura',
-    text: 'Organizo APIs, integracoes e fluxos de dados para sustentar produtos escalaveis, consistentes e prontos para evoluir.',
+    text: 'Organizo APIs, integrações e fluxos de dados para sustentar produtos escaláveis, consistentes e prontos para evoluir.',
   },
   {
     icon: 'bi-lightning-charge',
-    title: 'Solucoes digitais completas',
-    text: 'Conecto regra de negocio, design e implementacao para transformar necessidades reais em entregas funcionais.',
+    title: 'Soluções digitais completas',
+    text: 'Conecto regra de negócio, design e implementação para transformar necessidades reais em entregas funcionais.',
   },
 ];
 
@@ -36,44 +36,44 @@ const skillGroups = [
     items: ['React', 'JavaScript', 'Bootstrap', 'HTML5', 'CSS3', 'Git'],
   },
   {
-    title: 'Expansao de stack',
+    title: 'Expansão de stack',
     items: ['Node.js', 'APIs REST', 'MySQL', 'MongoDB', 'TypeScript', 'UX aplicado'],
   },
   {
     title: 'Forma de trabalhar',
-    items: ['Responsividade', 'Clean Code', 'Deploy', 'Versionamento', 'Prototipacao', 'Colaboracao'],
+    items: ['Responsividade', 'Clean Code', 'Deploy', 'Versionamento', 'Prototipação', 'Colaboração'],
   },
 ];
 
 const portfolioItems = [
   {
-    title: 'Landing page de alta conversao',
-    description: 'Pagina orientada a captacao de leads, com copy objetiva, hierarquia visual consistente e CTA estrategico.',
+    title: 'Landing page de alta conversão',
+    description: 'Página orientada à captação de leads, com copy objetiva, hierarquia visual consistente e CTA estratégico.',
     tags: ['React', 'Bootstrap', 'UX'],
   },
   {
     title: 'Dashboard comercial',
-    description: 'Painel para acompanhamento de vendas, indicadores e operacao, com foco em leitura rapida e manutencao simples.',
+    description: 'Painel para acompanhamento de vendas, indicadores e operação, com foco em leitura rápida e manutenção simples.',
     tags: ['UI', 'Data Viz', 'Front-end'],
   },
   {
-    title: 'Catalogo digital de servicos',
-    description: 'Experiencia sob medida para apresentar servicos, cases e diferenciais competitivos com visual premium.',
+    title: 'Catálogo digital de serviços',
+    description: 'Experiência sob medida para apresentar serviços, cases e diferenciais competitivos com visual premium.',
     tags: ['Design System', 'Performance'],
   },
   {
-    title: 'Formulario inteligente',
-    description: 'Fluxo de contato com validacao clara, feedback imediato e estrutura pronta para integracao com back-end.',
-    tags: ['Formularios', 'Validacao', 'Acessibilidade'],
+    title: 'Formulário inteligente',
+    description: 'Fluxo de contato com validação clara, feedback imediato e estrutura pronta para integração com back-end.',
+    tags: ['Formulários', 'Validação', 'Acessibilidade'],
   },
   {
-    title: 'Portfolio pessoal',
-    description: 'Projeto com secao hero marcante, vitrine de competencias e narrativa profissional objetiva.',
+    title: 'Portfólio pessoal',
+    description: 'Projeto com seção hero marcante, vitrine de competências e narrativa profissional objetiva.',
     tags: ['Branding', 'SPA', 'Responsive'],
   },
   {
-    title: 'Experiencias sob demanda',
-    description: 'Arquitetura front-end preparada para evoluir de landing page para produto completo quando necessario.',
+    title: 'Experiências sob demanda',
+    description: 'Arquitetura front-end preparada para evoluir de landing page para produto completo quando necessário.',
     tags: ['Escalabilidade', 'Vite', 'Componentes'],
   },
 ];
@@ -104,11 +104,11 @@ function validateForm(values) {
   if (!values.email.trim()) {
     nextErrors.email = 'Informe seu e-mail.';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-    nextErrors.email = 'Use um e-mail valido.';
+    nextErrors.email = 'Use um e-mail válido.';
   }
 
   if (values.phone.trim() && !/^[0-9()+\s-]{8,}$/.test(values.phone.trim())) {
-    nextErrors.phone = 'Telefone invalido.';
+    nextErrors.phone = 'Telefone inválido.';
   }
 
   if (!values.message.trim()) {
@@ -132,8 +132,8 @@ export default function App() {
   const [submitted, setSubmitted] = useState(false);
   const projectHighlights = [
     { value: '100%', label: 'foco em responsividade' },
-    { value: '6', label: 'blocos estrategicos na pagina' },
-    { value: '1', label: 'experiencia clara de ponta a ponta' },
+    { value: '6', label: 'blocos estratégicos na página' },
+    { value: '1', label: 'experiência clara de ponta a ponta' },
   ];
 
   function handleChange(event) {
@@ -161,12 +161,12 @@ export default function App() {
       return;
     }
 
-    const emailSubject = encodeURIComponent(`Contato pelo portfolio - ${formValues.name.trim()}`);
+    const emailSubject = encodeURIComponent(`Contato pelo portfólio - ${formValues.name.trim()}`);
     const emailBody = encodeURIComponent(
       [
         `Nome: ${formValues.name.trim()}`,
         `E-mail: ${formValues.email.trim()}`,
-        `Telefone: ${formValues.phone.trim() || 'Nao informado'}`,
+        `Telefone: ${formValues.phone.trim() || 'Não informado'}`,
         '',
         'Mensagem:',
         formValues.message.trim(),
@@ -197,7 +197,7 @@ export default function App() {
               type="button"
               aria-controls="portfolioNav"
               aria-expanded={isNavOpen}
-              aria-label="Abrir navegacao"
+              aria-label="Abrir navegação"
               onClick={() => setIsNavOpen((current) => !current)}
             >
               <span className="navbar-toggler-icon" />
@@ -231,12 +231,12 @@ export default function App() {
                 Moreira da Cunha
               </h1>
               <p className="hero-copy">
-                Desenvolvedor Full Stack em busca de novas oportunidades para criar experiencias
-                digitais solidas, elegantes e orientadas a resultados.
+                Desenvolvedor Full Stack em busca de novas oportunidades para criar experiências
+                digitais sólidas, elegantes e orientadas a resultados.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-dark hero-btn" href="#portfolio">
-                  Ver portfolio
+                  Ver portfólio
                 </a>
                 <a
                   className="btn btn-outline-dark hero-btn secondary"
@@ -268,12 +268,12 @@ export default function App() {
                 <img src={heroImage} alt="Fabio Moreira da Cunha" className="hero-photo" />
               </div>
               <div className="hero-badge badge-top">
-                <span className="badge-label">Disponivel para</span>
+                <span className="badge-label">Disponível para</span>
                 <strong>oportunidades full stack</strong>
               </div>
               <div className="hero-badge badge-bottom">
                 <span className="badge-label">Entrega</span>
-                <strong>solucoes digitais</strong>
+                <strong>soluções digitais</strong>
               </div>
             </div>
           </div>
@@ -283,16 +283,16 @@ export default function App() {
           <div className="container intro-layout">
             <div className="intro-copy reveal-up">
               <span className="section-eyebrow">Resumo profissional</span>
-              <h2>Codigo com clareza, visual com intencao e foco no que realmente precisa funcionar.</h2>
+              <h2>Código com clareza, visual com intenção e foco no que realmente precisa funcionar.</h2>
             </div>
             <div className="intro-text reveal-up delay-1">
               <p>
-                Minha proposta e transformar necessidades de negocio em interfaces objetivas,
-                organizadas e prontas para evoluir. Gosto de unir estrutura, boas praticas e uma
-                apresentacao que transmita confianca desde o primeiro contato.
+                Minha proposta é transformar necessidades de negócio em interfaces objetivas,
+                organizadas e prontas para evoluir. Gosto de unir estrutura, boas práticas e uma
+                apresentação que transmita confiança desde o primeiro contato.
               </p>
               <a href="#about" className="text-link">
-                Conheca minha forma de trabalhar
+                Conheça minha forma de trabalhar
               </a>
             </div>
           </div>
@@ -310,22 +310,22 @@ export default function App() {
           <div className="container">
             <SectionTitle
               eyebrow="Sobre mim"
-              title="Apresentacao profissional objetiva, clara e orientada a valor."
-              text="Este portfolio foi pensado para destacar repertorio tecnico, cuidado visual e prontidao para contribuir com equipes que valorizam entregas consistentes."
+              title="Apresentação profissional objetiva, clara e orientada a valor."
+              text="Este portfólio foi pensado para destacar repertório técnico, cuidado visual e prontidão para contribuir com equipes que valorizam entregas consistentes."
             />
 
             <div className="about-grid">
               <article className="about-story reveal-up">
                 <h3>O que eu entrego</h3>
                 <p>
-                  Atuo no desenvolvimento de interfaces e experiencias web com atencao especial a
-                  estrutura, legibilidade e manutencao. Busco solucoes que funcionem bem no presente
-                  sem comprometer os proximos passos do produto.
+                  Atuo no desenvolvimento de interfaces e experiências web com atenção especial à
+                  estrutura, legibilidade e manutenção. Busco soluções que funcionem bem no presente
+                  sem comprometer os próximos passos do produto.
                 </p>
                 <p>
                   Hoje estou em busca de oportunidades como Desenvolvedor Full Stack e quero
-                  contribuir com projetos que valorizem qualidade, aprendizado continuo e
-                  colaboracao real.
+                  contribuir com projetos que valorizem qualidade, aprendizado contínuo e
+                  colaboração real.
                 </p>
               </article>
 
@@ -345,9 +345,9 @@ export default function App() {
         <section className="skills-section section-dark" id="skills">
           <div className="container">
             <SectionTitle
-              eyebrow="Competencias"
+              eyebrow="Competências"
               title="Ferramentas e capacidades organizadas para transformar ideias em entregas."
-              text="Minha base tecnica combina front-end moderno, organizacao de interface, integracao com dados e atencao a experiencia final."
+              text="Minha base técnica combina front-end moderno, organização de interface, integração com dados e atenção à experiência final."
               light
             />
 
@@ -372,9 +372,9 @@ export default function App() {
           <div className="portfolio-banner">
             <div className="container">
               <SectionTitle
-                eyebrow="Portfolio"
-                title="Uma vitrine pensada para causar boa impressao e abrir boas conversas."
-                text="Os cards abaixo representam tipos de projeto e desafios que posso ajudar a resolver, sempre com atencao a clareza, consistencia visual e manutencao."
+                eyebrow="Portfólio"
+                title="Uma vitrine pensada para causar boa impressão e abrir boas conversas."
+                text="Os cards abaixo representam tipos de projeto e desafios que posso ajudar a resolver, sempre com atenção à clareza, consistência visual e manutenção."
                 light
               />
             </div>
@@ -401,8 +401,8 @@ export default function App() {
             <div className="contact-copy reveal-up">
               <SectionTitle
                 eyebrow="Contato"
-                title="Vamos conversar sobre sua proxima oportunidade ou projeto?"
-                text="Use o formulario para iniciar um contato profissional. Ao enviar, seu aplicativo de e-mail sera aberto com a mensagem estruturada para facilitar a continuidade da conversa."
+                title="Vamos conversar sobre sua próxima oportunidade ou projeto?"
+                text="Use o formulário para iniciar um contato profissional. Ao enviar, seu aplicativo de e-mail será aberto com a mensagem estruturada para facilitar a continuidade da conversa."
               />
               <div className="contact-points">
                 <div>
@@ -410,8 +410,8 @@ export default function App() {
                   <strong>Atuar em projetos e oportunidades como Desenvolvedor Full Stack</strong>
                 </div>
                 <div>
-                  <span>Escopo de atuacao</span>
-                  <strong>Landing pages, interfaces web e solucoes digitais sob medida</strong>
+                  <span>Escopo de atuação</span>
+                  <strong>Landing pages, interfaces web e soluções digitais sob medida</strong>
                 </div>
               </div>
             </div>
@@ -436,7 +436,7 @@ export default function App() {
                   type="email"
                   value={formValues.email}
                   onChange={handleChange}
-                  placeholder="voce@empresa.com"
+                  placeholder="você@empresa.com"
                   className={errors.email ? 'field-error' : ''}
                 />
                 {errors.email ? <small>{errors.email}</small> : null}
@@ -500,7 +500,7 @@ export default function App() {
               </a>
             ))}
           </div>
-          <p>Fabio Moreira da Cunha. Portfolio desenvolvido com React, Vite e Bootstrap.</p>
+          <p>Fabio Moreira da Cunha. Portfólio desenvolvido com React, Vite e Bootstrap.</p>
         </div>
       </footer>
     </div>
