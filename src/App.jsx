@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import heroImage from '../screens/Fabio-portrait.png';
 
+const contactEmail = 'fabiomoreiradacunha1@gmail.com';
+const whatsAppUrl =
+  'https://wa.me/5565996900584?text=Ol%C3%A1%2C%20Fabio!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar.';
+
 const navItems = [
   { href: '#about', label: 'Sobre mim' },
   { href: '#skills', label: 'Competências' },
@@ -77,7 +81,7 @@ const portfolioItems = [
 const socialLinks = [
   { href: 'https://github.com/', icon: 'bi-github', label: 'GitHub' },
   { href: 'https://www.linkedin.com/', icon: 'bi-linkedin', label: 'LinkedIn' },
-  { href: 'mailto:fabiomoreiradacunha1@gmail.com', icon: 'bi-envelope', label: 'E-mail' },
+  { href: `mailto:${contactEmail}`, icon: 'bi-envelope', label: 'E-mail' },
 ];
 
 function SectionTitle({ eyebrow, title, text, light = false }) {
@@ -157,6 +161,18 @@ export default function App() {
       return;
     }
 
+    const emailSubject = encodeURIComponent(`Contato pelo portfólio - ${formValues.name.trim()}`);
+    const emailBody = encodeURIComponent(
+      [
+        `Nome: ${formValues.name.trim()}`,
+        `E-mail: ${formValues.email.trim()}`,
+        `Telefone: ${formValues.phone.trim() || 'Não informado'}`,
+        '',
+        'Mensagem:',
+        formValues.message.trim(),
+      ].join('\n'),
+    );
+
     setSubmitted(true);
     setFormValues({
       name: '',
@@ -164,6 +180,8 @@ export default function App() {
       phone: '',
       message: '',
     });
+
+    window.location.href = `mailto:${contactEmail}?subject=${emailSubject}&body=${emailBody}`;
   }
 
   return (
@@ -220,7 +238,12 @@ export default function App() {
                 <a className="btn btn-dark hero-btn" href="#portfolio">
                   Ver portfólio
                 </a>
-                <a className="btn btn-outline-dark hero-btn secondary" href="#contact">
+                <a
+                  className="btn btn-outline-dark hero-btn secondary"
+                  href={whatsAppUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Falar comigo
                 </a>
               </div>
@@ -379,7 +402,7 @@ export default function App() {
               <SectionTitle
                 eyebrow="Contato"
                 title="Vamos conversar sobre a próxima entrega?"
-                text="O formulário abaixo já está preparado para validação no cliente e pode ser integrado, em uma próxima etapa, a e-mail, API ou automação comercial."
+                text="O formulário abaixo já abre seu cliente de e-mail com os dados preenchidos e pode evoluir depois para uma integração com API ou automação comercial."
               />
               <div className="contact-points">
                 <div>
@@ -450,8 +473,7 @@ export default function App() {
 
               {submitted ? (
                 <p className="success-note" role="status">
-                  Mensagem validada com sucesso. O próximo passo natural é integrar este formulário
-                  a um back-end ou serviço de e-mail.
+                  Mensagem validada com sucesso. Seu aplicativo de e-mail foi aberto para concluir o envio.
                 </p>
               ) : null}
             </form>
@@ -463,7 +485,7 @@ export default function App() {
         <div className="container footer-layout">
           <a href="#top" className="back-to-top">
             <i className="bi bi-arrow-up" aria-hidden="true" />
-            Back to top
+            Voltar ao topo
           </a>
           <div className="footer-socials">
             {socialLinks.map((link) => (
