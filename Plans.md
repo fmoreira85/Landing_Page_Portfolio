@@ -32,6 +32,7 @@ Objetivos do produto:
 - [x] Botao de fale comigo direciona para o WhatsApp 65 99690-0584
 - [x] O formulario de contato direciona a mensagem para o e-mail `fabiomoreiradacunha1@gmail.com`
 - [x] Normalizar textos profissionais e corrigir inconsistencias de encoding no front-end
+- [x] Em contato deixar o texto mais profissional
 
 ## Surprises & Discoveries
 
@@ -42,6 +43,7 @@ Objetivos do produto:
 - O menu mobile do Bootstrap precisou ser controlado via React para evitar dependencia desnecessaria do bundle JS do Bootstrap.
 - Durante a revisao do `src/App.jsx`, os textos em portugues estavam corrompidos por encoding mesmo apos o refinamento de copy; foi necessario regravar o arquivo para restaurar a acentuacao corretamente.
 - O formulario de contato ainda nao possui backend; a implementacao viavel neste escopo e abrir o cliente de e-mail do usuario com assunto e corpo preenchidos.
+- O item novo de copy profissional na secao de contato foi implementado com texto em ASCII para reduzir risco de nova corrupcao de encoding nesta etapa.
 
 ## Decision Log
 
@@ -61,6 +63,8 @@ Objetivos do produto:
   Motivo: e a opcao funcional mais completa dentro do escopo front-end atual, preservando os dados digitados pelo visitante.
 - Decisao: regravar integralmente `src/App.jsx` apos a descoberta de encoding corrompido.
   Motivo: um patch incremental sobre o arquivo atual seria menos confiavel do que restaurar o conteudo consistente em uma unica gravacao.
+- Decisao: padronizar a nova copy da secao de contato em ASCII.
+  Motivo: reduz a chance de regressao de encoding no ambiente atual do Windows enquanto mantem o texto profissional e claro.
 
 ## Outcomes & Retrospective
 
@@ -72,6 +76,7 @@ Entregas concluidas:
 - CTA principal secundario direcionando para WhatsApp;
 - link de e-mail e formulario preparados para abrir o cliente de e-mail com os dados preenchidos;
 - textos revisados para tom mais profissional e acentuacao correta;
+- secao de contato refinada com copy mais profissional para aproximacao comercial e oportunidades;
 - layout responsivo com identidade visual inspirada na referencia;
 - formulario com validacao client-side e feedback visual;
 - README criado com setup, scripts e pontos de customizacao.
@@ -84,6 +89,7 @@ Validacoes executadas:
 - `npm run build` executado apos a troca da foto do hero e concluido com sucesso;
 - `npm run build` executado apos os ajustes de copy e link de e-mail e concluido com sucesso;
 - `npm run build` executado apos WhatsApp, `mailto` no formulario e correcao de encoding, concluido com sucesso.
+- `npm run build` executado apos o refinamento profissional da secao de contato e concluido com sucesso.
 
 Proximas evolucoes possiveis:
 
@@ -185,6 +191,7 @@ Comandos executados nesta etapa:
 
 - `Get-Content "c:\\Users\\fabio\\Landing_Page_Portfolio\\PLANS.md"`
 - `git status --short`
+- `git status --short --branch`
 - `git log --oneline -5`
 - `Get-Content "c:\\Users\\fabio\\Landing_Page_Portfolio\\src\\App.jsx"`
 - `npm run build`
@@ -194,6 +201,7 @@ Observacoes de implementacao:
 - o CTA "Falar comigo" usa `wa.me` com mensagem inicial;
 - o envio do formulario permanece front-end only e abre o cliente de e-mail local do visitante;
 - o arquivo `src/App.jsx` foi regravado para remover texto corrompido por encoding e consolidar os ajustes de copy.
+- a secao de contato recebeu copy mais profissional em titulo, texto de apoio, escopo de atuacao e mensagem de sucesso.
 
 Direcao de design:
 
