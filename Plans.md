@@ -11,28 +11,26 @@ Objetivos do produto:
 - mostrar projetos em formato visual;
 - oferecer uma secao de contato funcional no front-end;
 - reproduzir a atmosfera minimalista da referencia com hero assimetrico, secoes bem marcadas e contraste preto/branco/cinza;
-- garantir boa experiencia em mobile, tablet e desktop.
+- garantir boa experiencia em mobile, tablet e desktop;
+- destacar o projeto de CRM/gestao de leads como case principal dentro da secao Portfolio.
 
 ## Progress
 
-- [x] Auditar o estado inicial do repositorio e os assets disponiveis
-- [x] Reescrever o ExecPlan com escopo tecnico, validacao e recuperacao
-- [x] Criar a base do projeto React + Vite com dependencias de UI definidas
-- [x] Estruturar assets, componentes e estilos globais da landing page
-- [x] Implementar navbar fixa e hero principal com foto real do Fabio
-- [x] Implementar secao de introducao escura com CTA e resumo profissional
-- [x] Implementar secao About Me com narrativa profissional e cards de atuacao
-- [x] Implementar secao Skills com grupos de tecnologias e icones
-- [x] Implementar secao Portfolio com grade de projetos e destaque visual
-- [x] Implementar secao Contact com formulario validado no cliente
-- [x] Implementar footer, links sociais e navegacao de retorno ao topo
-- [x] Aplicar responsividade e animacoes leves em todas as secoes
-- [x] Atualizar README com instrucoes de execucao, build e customizacao
-- [x] Executar validacoes finais e registrar resultados no plano
-- [x] Botao de fale comigo direciona para o WhatsApp 65 99690-0584
-- [x] O formulario de contato direciona a mensagem para o e-mail `fabiomoreiradacunha1@gmail.com`
-- [x] Normalizar textos profissionais e corrigir inconsistencias de encoding no front-end
-- [x] Em contato deixar o texto mais profissional
+- [x] Auditar o estado atual do repositorio, assets e build do projeto
+- [x] Estruturar a SPA em React + Vite com Hero, Intro, About, Skills, Portfolio, Contact e Footer
+- [x] Configurar CTA de WhatsApp e fluxo de `mailto` no formulario
+- [x] Criar e manter `README.md` com setup, scripts e pontos de customizacao
+- [x] Corrigir a copy geral do front-end e estabilizar o arquivo `src/App.jsx`
+- [x] Refinar a copy profissional da secao de contato
+- [x] Reescrever este ExecPlan com tarefas tecnicas, validacoes e criterios verificaveis
+- [x] Atualizar o titulo principal do `SectionTitle` da secao Portfolio para destacar projetos e servicos
+- [x] Atualizar os dados do primeiro `portfolio-card` para o case de SDR CRM com IA
+- [x] Importar e exibir `screens/Leads.png` no primeiro card do portfolio
+- [x] Tornar a imagem do primeiro card clicavel para `https://superb-cranachan-294219.netlify.app`
+- [x] Ajustar o CSS do portfolio para suportar media responsiva dentro do card sem quebrar o grid
+- [x] Atualizar o README com o novo asset e a nova personalizacao do card principal
+- [x] Executar validacao final com `npm run build`
+- [x] Atualizar `PLANS.md` com resultados finais, decisoes, descobertas e artefatos desta rodada
 
 ## Surprises & Discoveries
 
@@ -41,9 +39,11 @@ Objetivos do produto:
 - O plano foi originalmente mantido em ASCII para evitar problemas de encoding no Windows.
 - A imagem `screens/Portfolio.png` tem mais de 5 MB; usar esse arquivo no bundle final prejudicaria a performance.
 - O menu mobile do Bootstrap precisou ser controlado via React para evitar dependencia desnecessaria do bundle JS do Bootstrap.
-- Durante a revisao do `src/App.jsx`, os textos em portugues estavam corrompidos por encoding mesmo apos o refinamento de copy; foi necessario regravar o arquivo para restaurar a acentuacao corretamente.
-- O formulario de contato ainda nao possui backend; a implementacao viavel neste escopo e abrir o cliente de e-mail do usuario com assunto e corpo preenchidos.
-- O item novo de copy profissional na secao de contato foi implementado com texto em ASCII para reduzir risco de nova corrupcao de encoding nesta etapa.
+- Durante revisoes anteriores, os textos em portugues chegaram a ficar corrompidos por encoding; isso exige cautela ao regravar `src/App.jsx`.
+- O formulario de contato ainda nao possui backend; a implementacao viavel neste escopo continua sendo abrir o cliente de e-mail do usuario com assunto e corpo preenchidos.
+- Surgiu um novo asset local `screens/Leads.png`, adequado para representar visualmente o principal case de portfolio.
+- As novas instrucoes de negocio para Portfolio foram registradas no proprio `PLANS.md` por uma pessoa nao tecnica, com trechos de encoding corrompido; foi necessario traduzi-las para tarefas tecnicas claras.
+- O novo asset `screens/Leads.png` entrou no bundle final com cerca de 1,5 MB, o que funciona para esta rodada, mas merece futura otimizacao se a pagina for publicada com foco mais agressivo em performance.
 
 ## Decision Log
 
@@ -61,57 +61,61 @@ Objetivos do produto:
   Motivo: atende ao pedido do usuario sem depender de backend e funciona bem em mobile e desktop.
 - Decisao: fazer o formulario abrir `mailto:fabiomoreiradacunha1@gmail.com` com assunto e corpo preenchidos.
   Motivo: e a opcao funcional mais completa dentro do escopo front-end atual, preservando os dados digitados pelo visitante.
-- Decisao: regravar integralmente `src/App.jsx` apos a descoberta de encoding corrompido.
-  Motivo: um patch incremental sobre o arquivo atual seria menos confiavel do que restaurar o conteudo consistente em uma unica gravacao.
-- Decisao: padronizar a nova copy da secao de contato em ASCII.
-  Motivo: reduz a chance de regressao de encoding no ambiente atual do Windows enquanto mantem o texto profissional e claro.
+- Decisao: modelar o primeiro card do portfolio com campos opcionais de imagem e link externo.
+  Motivo: permite destacar o case principal sem transformar todos os cards em componentes especiais.
+- Decisao: deixar apenas a imagem do case principal como elemento clicavel.
+  Motivo: atende ao pedido funcional sem alterar o comportamento dos demais cards nem introduzir links acidentais em toda a superficie do card.
+- Decisao: manter o titulo da secao Portfolio como `Meus Projetos e Servicos`, preservando o eyebrow `Portfólio`.
+  Motivo: reforca a mensagem comercial solicitada sem perder a ancora conceitual da secao.
+- Decisao: documentar no README a personalizacao do card principal e o novo asset `Leads.png`.
+  Motivo: reduz friccao para futuras alteracoes de portfolio e mantem a documentacao coerente com o codigo entregue.
 
 ## Outcomes & Retrospective
 
-Entregas concluidas:
+Entregas concluidas ate o momento:
 
 - projeto React + Vite configurado do zero;
 - landing page de pagina unica implementada com Hero, Intro, About, Skills, Portfolio, Contact e Footer;
 - hero atualizado com retrato atual do Fabio;
 - CTA principal secundario direcionando para WhatsApp;
 - link de e-mail e formulario preparados para abrir o cliente de e-mail com os dados preenchidos;
-- textos revisados para tom mais profissional e acentuacao correta;
+- textos revisados para tom mais profissional;
 - secao de contato refinada com copy mais profissional para aproximacao comercial e oportunidades;
+- secao Portfolio atualizada com titulo mais comercial;
+- primeiro card do portfolio transformado em case principal com imagem, link externo e stack atualizada;
 - layout responsivo com identidade visual inspirada na referencia;
 - formulario com validacao client-side e feedback visual;
-- README criado com setup, scripts e pontos de customizacao.
+- README criado com setup, scripts e pontos de customizacao;
+- README atualizado para refletir o novo asset e a customizacao do card principal.
 
-Validacoes executadas:
+Validacoes executadas ate o momento:
 
 - `npm install` concluido com sucesso;
 - `npm run build` concluido com sucesso apos a implementacao inicial;
-- `npm run build` executado novamente apos refinamento de performance e concluido com sucesso;
-- `npm run build` executado apos a troca da foto do hero e concluido com sucesso;
-- `npm run build` executado apos os ajustes de copy e link de e-mail e concluido com sucesso;
-- `npm run build` executado apos WhatsApp, `mailto` no formulario e correcao de encoding, concluido com sucesso.
-- `npm run build` executado apos o refinamento profissional da secao de contato e concluido com sucesso.
+- `npm run build` executado novamente apos refinamentos de copy e concluido com sucesso;
+- `npm run build` executado apos ajustes de contato e concluido com sucesso.
+- `npm run build` executado apos a atualizacao do card principal do portfolio e concluido com sucesso.
 
-Proximas evolucoes possiveis:
+Pendencias desta rodada:
 
-- conectar o formulario a uma API, e-mail transacional ou servico de automacao para envio sem depender do cliente local;
-- substituir os links sociais placeholder por URLs reais do Fabio;
-- adicionar projetos reais com links de demo e repositorio.
+- nenhuma; todos os itens do `Progress` foram concluidos.
 
 ## Context and Orientation
 
-Estado inicial:
+Estado atual observado:
 
-- projeto sem app React criado;
-- arquivos de referencia presentes em `screens/Portfolio.png` e `screens/Fabio.jpg`;
-- `README.md` existente, mas ainda vazio para fins praticos.
+- projeto React funcional em `src/` com layout responsivo ja implementado;
+- `README.md` presente e utilizavel;
+- asset novo `screens/Leads.png` disponivel para uso no primeiro case do portfolio;
+- `PLANS.md` recebeu instrucoes de negocio adicionais no fim da secao de contexto.
 
-Diretrizes visuais extraidas da referencia:
+Diretrizes visuais relevantes:
 
 - topo e hero sobre fundo preto;
 - painel claro inclinado no hero com tipografia forte;
 - navegacao minimalista e compacta;
 - secoes alternando fundo claro e escuro;
-- portfolio com imagem de apoio e cards em grade;
+- portfolio com destaque visual e cards em grade;
 - formulario de contato com estilo minimalista.
 
 Conteudo base a utilizar:
@@ -122,94 +126,97 @@ Conteudo base a utilizar:
 - Proposta de valor: vende solucoes digitais
 - WhatsApp: 65 99690-0584
 - E-mail: fabiomoreiradacunha1@gmail.com
+- Titulo do portfolio: `Meus Projetos e Servicos`
+- Case principal:
+  - titulo: `SDR CRM | Plataforma de Gestao de Leads com IA`
+  - descricao: `CRM full-stack para pre-vendas com leads, kanban, campanhas, metricas e IA, usando React, Node, Supabase.`
+  - tags: `Node.js`, `PostgreSQL`, `Docker`, `API`
+  - imagem: `screens/Leads.png`
+  - link: `https://superb-cranachan-294219.netlify.app`
 
 ## Plan of Work
 
-1. Criar a infraestrutura minima do app com Vite, React e dependencias visuais.
-2. Montar a arquitetura da landing em componentes e dados locais reutilizaveis.
-3. Implementar cada secao principal alinhada a referencia, mas adaptada ao conteudo do Fabio.
-4. Ajustar experiencia responsiva, acessibilidade basica e animacoes discretas.
-5. Validar build/lint visualmente pelo codigo e registrar tudo no plano e no README.
-6. Fechar os pendentes de contato com ligacao para WhatsApp e encaminhamento por e-mail no front-end.
+1. Reestruturar o ExecPlan para refletir o estado atual do projeto e tornar as proximas tarefas verificaveis.
+2. Ajustar a camada de dados do portfolio em `src/App.jsx` para comportar um case principal com imagem e link.
+3. Atualizar a secao Portfolio para refletir a nova mensagem comercial e o novo case principal.
+4. Ajustar `src/styles.css` para que o card com imagem mantenha a mesma linguagem visual e permaneça responsivo.
+5. Atualizar `README.md` com o novo asset e a forma de customizar o card principal.
+6. Rodar `npm run build`, validar o resultado e registrar tudo no plano.
 
 ## Concrete Steps
 
-1. Criar `package.json`, configuracao do Vite e ponto de entrada React.
-2. Instalar `react`, `react-dom`, `vite`, `@vitejs/plugin-react`, `bootstrap` e `bootstrap-icons`.
-3. Criar `index.html`, `src/main.jsx`, `src/App.jsx` e folhas de estilo.
-4. Importar a imagem principal do Fabio no hero e usar `Portfolio.png` como referencia de composicao.
-5. Construir componentes/sections para Hero, Intro, About, Skills, Portfolio, Contact e Footer.
-6. Definir arrays de dados para skills, servicos, projetos e links sociais.
-7. Refinar layout com grid responsivo, espacamentos, tipografia e estados hover/focus.
-8. Atualizar `README.md` com setup, scripts e visao geral da estrutura.
-9. Fechar os fluxos de contato com `wa.me` e `mailto`.
-10. Rodar validacoes (`npm run build`) e registrar os resultados neste documento.
+1. Atualizar o `Progress` deste ExecPlan com tarefas atômicas e verificaveis.
+2. Importar `screens/Leads.png` em `src/App.jsx`.
+3. Estender o objeto do primeiro item de `portfolioItems` com `image` e `href`.
+4. Alterar o `SectionTitle` do bloco Portfolio para `Meus Projetos e Servicos`.
+5. Renderizar a imagem do primeiro card dentro de um link externo com `target="_blank"` e `rel="noreferrer"`.
+6. Atualizar titulo, descricao e tags do primeiro card com o novo case.
+7. Criar classes CSS para media do card: moldura, hover e comportamento responsivo.
+8. Atualizar `README.md` para incluir `Leads.png` na estrutura e na personalizacao.
+9. Executar `npm run build`.
+10. Registrar validacoes, arquivos alterados, comandos usados e conclusoes em `PLANS.md`.
 
 ## Validation and Acceptance
 
 Criticos de aceitacao:
 
-- a aplicacao deve iniciar via Vite sem erros de compilacao;
 - `npm run build` deve concluir com sucesso;
-- a pagina deve conter Hero, About, Skills, Portfolio, Contact e Footer;
-- a foto do Fabio deve aparecer no hero principal;
-- a navegacao deve levar para as secoes por ancora;
-- o layout deve se adaptar para mobile, tablet e desktop apenas com CSS responsivo;
-- o README deve explicar como instalar, executar e gerar build;
-- o CTA "Falar comigo" deve abrir o WhatsApp do Fabio;
-- o formulario de contato deve encaminhar o usuario para o e-mail do Fabio com os dados preenchidos.
+- a secao Portfolio deve exibir o titulo `Meus Projetos e Servicos`;
+- o primeiro card deve mostrar a imagem `screens/Leads.png`;
+- ao clicar na imagem do primeiro card, o link configurado deve apontar para `https://superb-cranachan-294219.netlify.app`;
+- o primeiro card deve exibir o novo titulo, nova descricao e as tags `Node.js`, `PostgreSQL`, `Docker` e `API`;
+- o layout deve permanecer responsivo sem sobreposicoes ou quebras obvias no grid do portfolio;
+- `README.md` deve mencionar o novo asset e onde customizar o card principal;
+- todos os itens de `Progress` devem estar marcados como concluidos ao encerrar.
 
 Evidencias esperadas:
 
-- arquivos do projeto React criados;
-- plano com todos os itens de progresso marcados ao final;
-- registro de validacao preenchido em `Outcomes & Retrospective` e/ou `Surprises & Discoveries`;
-- `README.md` criado e preenchido com instrucoes praticas;
-- `src/App.jsx` configurado com `wa.me` e `mailto`.
+- `src/App.jsx` atualizado com o novo case principal;
+- `src/styles.css` atualizado com classes para media no card;
+- `README.md` atualizado;
+- `PLANS.md` com progresso, descobertas, decisao e retrospective finais;
+- `npm run build` executado com sucesso ao final.
 
 ## Idempotence and Recovery
 
-- Se a instalacao de dependencias falhar, repetir `npm install` apos corrigir conectividade/permissoes.
-- Se algum arquivo estrutural ja existir, atualizar seu conteudo em vez de duplicar componentes.
-- Se o build falhar, corrigir erros de importacao/JSX/CSS e rerodar a validacao antes de encerrar.
-- Se houver divergencia visual relevante com a referencia, priorizar manter a hierarquia visual e a responsividade.
-- Se o cliente de e-mail nao estiver configurado no dispositivo do visitante, manter o link direto `mailto:` como fallback explicito e considerar integracao futura com backend.
+- Se algum asset local nao for encontrado, revalidar a lista de arquivos em `screens/` antes de alterar importacoes.
+- Se o build falhar apos alterar o card, revisar primeiro importacoes, JSX condicional e classes CSS novas.
+- Se a imagem causar desequilibrio visual no grid, ajustar somente as classes do card principal em vez de refatorar toda a secao Portfolio.
+- Se houver nova regressao de encoding no `App.jsx`, regravar o arquivo inteiro em UTF-8 consistente.
+- Se o link externo precisar mudar depois, manter o dado no array `portfolioItems` para edicao simples e isolada.
 
 ## Artifacts and Notes
 
-Assets locais obrigatorios:
+Assets locais relevantes:
 
 - `screens/Fabio-portrait.png` como retrato principal do hero;
-- `screens/Portfolio.png` como guia visual de composicao.
+- `screens/Portfolio.png` como guia visual de composicao;
+- `screens/Leads.png` como imagem do case principal do portfolio.
 
-Arquivos alterados nesta etapa:
+Arquivos previstos para alteracao nesta rodada:
 
 - `src/App.jsx`
+- `src/styles.css`
+- `README.md`
 - `PLANS.md`
 
-Comandos executados nesta etapa:
+Comandos ja executados nesta rodada:
 
 - `Get-Content "c:\\Users\\fabio\\Landing_Page_Portfolio\\PLANS.md"`
-- `git status --short`
+- `Get-Content "c:\\Users\\fabio\\Landing_Page_Portfolio\\README.md"`
 - `git status --short --branch`
-- `git log --oneline -5`
-- `Get-Content "c:\\Users\\fabio\\Landing_Page_Portfolio\\src\\App.jsx"`
+- `git log --oneline -6`
+- `rg --files .`
+- `rg -n "portfolio-card|portfolio-grid|portfolio-banner|section-title|portfolio-tags|portfolio-index" src/styles.css -S`
 - `npm run build`
 
 Observacoes de implementacao:
 
-- o CTA "Falar comigo" usa `wa.me` com mensagem inicial;
-- o envio do formulario permanece front-end only e abre o cliente de e-mail local do visitante;
-- o arquivo `src/App.jsx` foi regravado para remover texto corrompido por encoding e consolidar os ajustes de copy.
-- a secao de contato recebeu copy mais profissional em titulo, texto de apoio, escopo de atuacao e mensagem de sucesso.
-
-Direcao de design:
-
-- minimalista;
-- preto, branco e cinza como base;
-- destaque pontual com cinza quente e sombra suave;
-- tipografia forte com espacos amplos;
-- animacoes discretas de entrada e hover.
+- o primeiro card do portfolio recebera tratamento de destaque, mas sem transformar a grade inteira em um novo componente complexo;
+- o arquivo `screens/Leads.png` esta atualmente nao rastreado no Git, mas pode ser referenciado normalmente pelo projeto local;
+- o primeiro card passou a aceitar `image` e `href` no array `portfolioItems`;
+- a imagem do case principal foi inserida acima do conteudo textual com hover discreto;
+- o plano final registra os comandos adicionais e os resultados do build desta rodada.
 
 ## Interfaces and Dependencies
 
@@ -236,3 +243,4 @@ Interfaces externas em uso:
 
 - `https://wa.me/5565996900584`
 - `mailto:fabiomoreiradacunha1@gmail.com`
+- `https://superb-cranachan-294219.netlify.app`
