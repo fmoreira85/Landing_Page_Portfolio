@@ -39,11 +39,6 @@ Critério de parada:
 Você só pode finalizar quando:
 
 - Todos os itens do Progress estiverem marcados com [x]
-- Cadastro estiver funcionando
-- Login estiver funcionando
-- Área protegida estiver funcionando
-- Frontend estiver integrado ao backend
-- Docker estiver funcionando
 - README estiver criado
 - Validações tiverem sido executadas
 
