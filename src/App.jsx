@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import heroImage from '../screens/Fabio-portrait.png';
+import leadsImage from '../screens/Leads.png';
 
 const contactEmail = 'fabiomoreiradacunha1@gmail.com';
 const whatsAppUrl =
@@ -47,9 +48,12 @@ const skillGroups = [
 
 const portfolioItems = [
   {
-    title: 'Landing page de alta conversão',
-    description: 'Página orientada à captação de leads, com copy objetiva, hierarquia visual consistente e CTA estratégico.',
-    tags: ['React', 'Bootstrap', 'UX'],
+    title: 'SDR CRM | Plataforma de Gestão de Leads com IA',
+    description:
+      'CRM full-stack para pré-vendas com leads, kanban, campanhas, métricas e IA, usando React, Node e Supabase.',
+    tags: ['Node.js', 'PostgreSQL', 'Docker', 'API'],
+    image: leadsImage,
+    href: 'https://superb-cranachan-294219.netlify.app',
   },
   {
     title: 'Dashboard comercial',
@@ -373,8 +377,8 @@ export default function App() {
             <div className="container">
               <SectionTitle
                 eyebrow="Portfólio"
-                title="Uma vitrine pensada para causar boa impressão e abrir boas conversas."
-                text="Os cards abaixo representam tipos de projeto e desafios que posso ajudar a resolver, sempre com atenção à clareza, consistência visual e manutenção."
+                title="Meus Projetos e Serviços"
+                text="Os cards abaixo destacam entregas e formatos de solução que representam meu repertório técnico, minha capacidade de execução e o tipo de problema que posso ajudar a resolver."
                 light
               />
             </div>
@@ -383,6 +387,17 @@ export default function App() {
           <div className="container portfolio-grid">
             {portfolioItems.map((item, index) => (
               <article className={`portfolio-card reveal-up delay-${index % 3}`} key={item.title}>
+                {item.image ? (
+                  <a
+                    className="portfolio-card-media"
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Abrir projeto ${item.title}`}
+                  >
+                    <img src={item.image} alt={item.title} />
+                  </a>
+                ) : null}
                 <span className="portfolio-index">0{index + 1}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>

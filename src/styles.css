@@ -556,6 +556,27 @@ img {
   box-shadow: 0 35px 75px rgba(0, 0, 0, 0.16);
 }
 
+.portfolio-card-media {
+  display: block;
+  margin: -0.45rem -0.45rem 1.25rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-card-media img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.portfolio-card-media:hover img,
+.portfolio-card-media:focus-visible img {
+  transform: scale(1.03);
+  filter: saturate(1.04);
+}
+
 .portfolio-index {
   display: inline-block;
   margin-bottom: 1rem;

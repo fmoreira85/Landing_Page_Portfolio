@@ -8,6 +8,7 @@ O projeto entrega uma landing page de pagina unica com:
 
 - hero principal com foto real e CTAs;
 - secoes de resumo profissional, About Me, Skills, Portfolio e Contact;
+- card principal de portfolio com imagem clicavel para um case real;
 - formulario com validacao no cliente;
 - layout responsivo para mobile, tablet e desktop;
 - identidade visual inspirada na referencia da pasta `screens`.
@@ -52,6 +53,7 @@ npm run preview
 .
 |-- screens/
 |   |-- Fabio.jpg
+|   |-- Leads.png
 |   `-- Portfolio.png
 |-- src/
 |   |-- App.jsx
@@ -66,14 +68,16 @@ npm run preview
 
 - Atualize os textos principais em `src/App.jsx`.
 - Substitua os links sociais do array `socialLinks` em `src/App.jsx`.
+- Edite o primeiro item do array `portfolioItems` em `src/App.jsx` para trocar imagem, titulo, descricao, tags e link do case principal.
 - Ajuste cores, espacamentos e animacoes em `src/styles.css`.
 - Caso queira integrar o formulario, conecte o `handleSubmit` a uma API, servico de e-mail ou automacao.
 
 ## Validacao executada
 
-- `npm run build` executado com sucesso em 19 de maio de 2026.
+- `npm run build` executado com sucesso em 20 de maio de 2026.
 
 ## Observacoes
 
 - `screens/Fabio.jpg` e usado como imagem principal do hero.
+- `screens/Leads.png` e usado como imagem do case principal da secao Portfolio.
 - `screens/Portfolio.png` foi mantido como referencia visual de design e nao e enviado no bundle final para evitar peso excessivo.
